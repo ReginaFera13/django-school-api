@@ -1,13 +1,15 @@
 from django.db import models
+from django.core import validators as v
+from .validators import validate_name, validate_school_email, validate_combination
 
 # Create your models here.
 
 class Student(models.Model):
-    name = models.CharField(max_length=50, unique=False)
-    student_email = models.EmailField(max_length=50, unique=True)
-    personal_email = models.EmailField(max_length=50, unique=True)
-    locker_number = models.IntegerField(default=110, unique=True)
-    locker_combination = models.CharField(max_length=50, default='12-12-12', unique=False)
+    name = models.CharField(unique=False, validators=[v.MaxLengthValidator(50), validate_name])
+    student_email = models.EmailField(unique=True, validators=[validate_school_email])
+    personal_email = models.EmailField(unique=True)
+    locker_number = models.IntegerField(default=110, unique=True, validators=[v.MinValueValidator(1), v.MaxValueValidator(200)])
+    locker_combination = models.CharField(default='12-12-12', unique=False, validators=[v.MaxLengthValidator(8), validate_combination])
     good_student = models.BooleanField(default=True, unique=False)
     
     def __str__(self):
