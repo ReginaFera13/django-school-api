@@ -9,7 +9,7 @@ class Subject(models.Model):
     # students = models.ManyToManyField(Student, related_name='subjects', validators=[v.MinLengthValidator(0), v.MaxLengthValidator(31)])
     
     def __str__(self):
-        return f'{self.subject_name} - {self.professor} - {len(self.students)}'
+        return f'{self.subject_name} - {self.professor} - {self.students.count()}'
     
     def add_a_student(self, student_id):
         if self.students.count() < 31:
