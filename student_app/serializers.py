@@ -12,7 +12,7 @@ class StudentAllSerializer(ModelSerializer):
     
     class Meta:
         model = Student
-        fields = ['name', 'student_email', 'personal_email', 'locker_number', 'locker_combination', 'good_student', 'subjects']
+        fields = ['id', 'name', 'student_email', 'personal_email', 'locker_number', 'locker_combination', 'good_student', 'subjects']
     
     def get_subjects(self, instance):
         subjects = instance.subjects.all()

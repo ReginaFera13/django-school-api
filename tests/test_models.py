@@ -353,6 +353,7 @@ class Test_student(TestCase):
             self.assertEquals(
                 serializer.data,
                 {
+                    "id": 18,
                     "name": "John W. Watson",
                     "student_email": "thisIsAnEmail@school.com",
                     "personal_email": "thisIsAnEmail@gmail.com",

@@ -25,6 +25,7 @@ class Test_endpoints(TestCase):
 
     def test_02_url_pattern_subjects(self):
         url_route = resolve(reverse("all_subjects"))
+        print(url_route)
         self.assertEquals(url_route.route, 'api/v1/subjects/')
 
     def test_03_all_students(self):

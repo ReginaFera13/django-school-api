@@ -38,4 +38,3 @@ class Student(models.Model):
             return self.subjects
         else:
             raise Exception('This students class schedule is empty!')
-    
